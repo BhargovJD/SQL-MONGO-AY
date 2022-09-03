@@ -1,0 +1,86 @@
+https://sqliteonline.com/
+..................................
+Create table:
+ 
+CREATE TABLE products (
+id INT NOT NULL,
+name STRING,
+price MONEY,
+PRIMARY KEY (id)
+)
+..................................
+Insert:
+
+INSERT INTO products
+VALUES(1,"Pen",1.20);
+....
+INSERT INTO products(id,name)
+VALUES(2,"Pencil");
+..................................
+Show:
+
+SELECT * FROM products;
+..................................
+Read:
+
+SELECT name,price FROM products;
+SELECT name FROM products WHERE id=1;
+SELECT * FROM products WHERE id=1;
+SELECT * FROM products WHERE name="Pen"
+..................................
+Update:
+
+UPDATE products set price=0.98 WHERE id=2;
+ALTER TABLE products ADD stock INT;
+UPDATE products set stock=32 WHERE name="Pen";
+UPDATE products set stock=12 WHERE name="Pencil";
+..................................
+Delete:
+
+DELETE FROM products WHERE id=1;
+DELETE  FROM 'products';
+
+..................................
+Relation:
+
+Customers table:
+
+CREATE TABLE customers (
+id INT NOT NULL,
+first_name STRING,
+last_name STring
+)
+....
+INSERT INTO customers
+VALUES(2,"Angela","Yu");
+
+....
+Orders table:
+
+CREATE TABLE orders (
+id INT NOT NULL,
+order_number INT,
+customer_id INT,
+product_id INT,
+PRIMARY KEY (id),
+FOREIGN KEY(customer_id) REFERENCES customers(id)
+FOREIGN KEY(product_id) REFERENCES products(id)
+)
+....
+insert INTO orders VALUES(1,4362,2,1);
+....
+Inner join(orders join with customers)
+
+SELECT orders.order_number, customers.first_name, customers.last_name
+from orders
+INNER JOIN customers ON  orders.customer_id = customers.id;
+....
+Inner join(orders join with products)
+
+SELECT orders.order_number, products.name
+from orders
+INNER JOIN products ON  orders.product_id = products.id;
+....
+SELECT orders.order_number, products.name, products.price, products.stock
+from orders
+INNER JOIN products ON  orders.product_id = products.id;
