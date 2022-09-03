@@ -1,0 +1,32 @@
+....................................
+CMD:
+mongo --version;
+mongod;
+INSERT CMD: mongo;
+help;
+show dbs;
+....................................
+CREATE:
+use shopDB;
+WORKING DB: db;
+db.products.insertOne({_id:1,name:"Pen",price:1.20});
+show collections;
+db.products.insertOne({_id:2,name:"Pencil",price:0.80,stock:12});
+....................................
+READ:
+db.products.find({});
+db.products.find({name:"Pencil"});
+db.products.find({price:{$gt:1}});
+PROJECTION: 
+db.products.find({_id:1},{name:1});
+db.products.find({_id:1},{name:1,_id:0});
+....................................
+UPDATE:
+db.products.updateOne({_id:1},{$set:{stock:32}})
+....................................
+DELETE:
+db.products.deleteOne({_id:2})
+....................................
+Relation:
+db.products.insert({_id:3,name:"Rubber",price:1.30,stock:43,reviews:[{authorName:"Sally",rating:5,review:"Best Rubber!"},{authorName:"John",rating:5,review:"Awesome!"}]})
+
