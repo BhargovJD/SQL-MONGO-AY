@@ -1,0 +1,5 @@
+$ touch app.js
+$ npm init -y
+$ npm install mongodb
+
+Doc: http://mongodb.github.io/node-mongodb-native/3.4/quick-start/quick-start/
