@@ -4,6 +4,15 @@ const mongoose = require('mongoose')
 const url = 'mongodb://localhost:27017/fruitsDBV2';
 mongoose.connect(url)
 
+// For People(Peoples) collection
+const peopleSchema = new mongoose.Schema({
+  name:String,
+  age:Number,
+});
+
+// Collection
+const People = mongoose.model("People", peopleSchema);
+
 // For Fruit(Fruits) collection
 const fruitSchema = new mongoose.Schema({
   name:{
@@ -15,33 +24,42 @@ const fruitSchema = new mongoose.Schema({
     min:1,
     max:10
   },
-  review:String
+  review:String,
+  ownedBy:peopleSchema
 });
 
 // Fruit = Fruits is collection
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
+// Relationship
+const bhargov = new People({ 
+  name: 'Bhargov',
+  age:26,
+});
+bhargov.save()
+
 
 // fruit is a document to be stored inside Fruit(Fruits) collection.
 const fruit = new Fruit({ 
-  name: 'Apple',
+  name: 'Guava2',
   rating:7,
-  review:"Good..." 
+  review:"Good...",
+  ownedBy: bhargov
 });
 
 // Save : insert one
-// fruit.save().then(() => console.log('okk'));;
+fruit.save().then(() => console.log('okk'));;
 
 
 
 // For People(Peoples) collection
-const peopleSchema = new mongoose.Schema({
-  name:String,
-  age:Number,
-});
+// const peopleSchema = new mongoose.Schema({
+//   name:String,
+//   age:Number,
+// });
 
 // Collection
-const People = mongoose.model("People", peopleSchema);
+// const People = mongoose.model("People", peopleSchema);
 
 // Document
 const people1 = new People({ 
