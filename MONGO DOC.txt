@@ -29,4 +29,7 @@ db.products.deleteOne({_id:2})
 ....................................
 Relation:
 db.products.insert({_id:3,name:"Rubber",price:1.30,stock:43,reviews:[{authorName:"Sally",rating:5,review:"Best Rubber!"},{authorName:"John",rating:5,review:"Awesome!"}]})
-
+....................................
+Delete DB:
+use fruitsDB
+switched to db fruitsDB
