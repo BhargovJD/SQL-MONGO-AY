@@ -6,8 +6,15 @@ mongoose.connect(url)
 
 // For Fruit(Fruits) collection
 const fruitSchema = new mongoose.Schema({
-  name:String,
-  rating:Number,
+  name:{
+    type:String,
+    required:[true, "name field is required"]
+  },
+  rating:{
+    type:Number,
+    min:1,
+    max:10
+  },
   review:String
 });
 
