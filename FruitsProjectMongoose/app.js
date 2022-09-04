@@ -100,4 +100,37 @@ People.find(function(err, peoples){
 })
 
 
+// UPDATE ONE
+People.updateOne({name:"Max"}, {name:"Max2"}, function(err){
+if(err){
+  console.log(err)
+}
+else{
+  console.log("Successfully updated the document!")
+}
+})
+
+
+// DELETE ONE
+People.deleteOne({name:"Max2"}, function(err){
+  if(err){
+    console.log(err)
+  }
+  else{
+    console.log("Successfully deleted the document!")
+  }
+  })
+
+
+  // DELETE MANY
+People.deleteMany({name:"John"}, function(err){
+  if(err){
+    console.log(err)
+  }
+  else{
+    console.log("Successfully deleted all the document!")
+  }
+  })
+
+
 
