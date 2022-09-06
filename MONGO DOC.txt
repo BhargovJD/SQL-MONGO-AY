@@ -33,3 +33,4 @@ db.products.insert({_id:3,name:"Rubber",price:1.30,stock:43,reviews:[{authorName
 Delete DB:
 use fruitsDB
 switched to db fruitsDB
+db.dropDatabase()
